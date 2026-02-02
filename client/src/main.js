@@ -1,6 +1,6 @@
 
-const form = document.getElementById('animalForm')
-const baseURL = 'https://deploying-and-git-server.onrender.com'
+const form = document.getElementById('form')
+const baseURL = 'https://w4project-ppri.onrender.com/'
 // http://localhost:4242
 
 async function fetchData() {
@@ -17,8 +17,9 @@ async function displayMessages() {
 
   messages.forEach((message) => {
     const div = document.createElement('div')
-    const userName = document.createElement('p')
-    const messageContent = document.createElement('p')
+    const animal = document.createElement('p')
+    const likes = document.createElement('p')
+    const comment = document.createElement('p')
 
     userName.textContent = message.msg_name
     messageContent.textContent = message.content
