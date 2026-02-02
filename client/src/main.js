@@ -4,32 +4,36 @@ const baseURL = 'https://w4project-ppri.onrender.com/'
 // http://localhost:4242
 
 async function fetchData() {
-  const response = await fetch(`${baseURL}/messages`)
-  const messages = await response.json()
+  const response = await fetch(`${baseURL}/animals`)
+  const animals = await response.json()
 
-  console.log(messages)
+  console.log(animals)
 
-  return messages
+  return animals
 }
 
-async function displayMessages() {
-  const messages = await fetchData()
+async function displayanimals() {
+  const animals = await fetchData()
 
-  messages.forEach((message) => {
+  animals.forEach((message) => {
     const div = document.createElement('div')
     const animal = document.createElement('p')
     const likes = document.createElement('p')
     const comment = document.createElement('p')
 
-    userName.textContent = message.msg_name
-    messageContent.textContent = message.content
+    // userName.textContent = message.msg_name
+    // messageContent.textContent = message.content
 
-    div.append(userName, messageContent)
+    animal.textContent = message.animal
+    likes.textContent = textContent.likes
+    comment.textContent = document.comment
+
+    // div.append(userName, messageContent)
 
     display.appendChild(div)
   })
 }
-displayMessages()
+displayanimals()
 
 async function handleSubmit(event) {
   event.preventDefault()
@@ -43,7 +47,7 @@ async function handleSubmit(event) {
   //   "content": 'foo'
   // }
 
-  const response = await fetch(`${baseURL}/messages`, {
+  const response = await fetch(`${baseURL}/animals`, {
     headers: {
       "Content-Type" : "application/json"
     },

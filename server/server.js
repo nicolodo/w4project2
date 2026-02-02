@@ -22,16 +22,16 @@ app.get('/', (req, res) => {
 
 //  making an async function as the endpoint
 // This logs the table to the console
-app.get("/messages", async function (request, response) {
-    const data = await db.query("SELECT * FROM messages");
-    const messages = data.rows
-    res.status(200).json(messages)
-    // response.json(messages.rows);
+app.get("/animals", async function (request, response) {
+    const data = await db.query("SELECT * FROM animals");
+    const animals = data.rows
+    res.status(200).json(animals)
+    // response.json(animals.rows);
 });
 
-app.post("/messages", async function (request, response) {
-    const messages = await db.query("SELECT * FROM messages WHERE id = 1");
-    response.json(messages.rows);
+app.post("/animals", async function (request, response) {
+    const animals = await db.query("SELECT * FROM animals WHERE id = 1");
+    response.json(animals.rows);
 })
 
 app.listen(4242, () => {
