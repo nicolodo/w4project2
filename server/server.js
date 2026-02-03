@@ -15,6 +15,10 @@ const db = new pg.Pool({
     connectionString: process.env.DB_CONN
 });
 
+// db.query(
+//     `INSERT INTO animals (animal_name, likes, comment) VALUES ('bill', '3', 'bill the playpus is so cool!')`
+// );
+
 app.get('/', (req, res) => {
     res.send("Hello you're looking at this website!");
     console.log("the root has been requested!")
@@ -30,6 +34,7 @@ app.get("/animals", async function (req, res) {
 });
 
 app.post('/animals', async (req, res) => {
+    console.log("you are requesting a post!")
     const userData = req.body
     console.log(userData)
     const dbQuery = await db.query(`INSERT INTO animals (animal_name, likes, comment) VALUES ($1, $2, $3)`, [userData.animal_name, userData.likes, userData.comment])
