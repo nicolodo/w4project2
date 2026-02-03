@@ -14,9 +14,11 @@ async function fetchData() {
 
 async function displayanimals() {
   const animals = await fetchData()
+  const display = document.getElementById('app'); 
 
   animals.forEach((animal) => {
     const div = document.createElement('div')
+
     const creature = document.createElement('p')
     const likes = document.createElement('p')
     const comment = document.createElement('p')
