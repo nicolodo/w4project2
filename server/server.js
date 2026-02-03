@@ -38,7 +38,7 @@ app.post('/animals', async (req, res) => {
     try {
     console.log("you are requesting a post!")
     const userData = req.body
-    console.log(userData)
+    console.log('userData from forms:', userData)
     const dbQuery = await db.query(`INSERT INTO animals (animal_name, likes, comment) VALUES ($1, $2, $3)`, [userData.animal_name, userData.likes, userData.comment])
 
     res.status(200).json({message: "added message"})
