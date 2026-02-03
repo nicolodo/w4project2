@@ -1,7 +1,7 @@
 
 const form = document.getElementById('form')
-const baseURL = 'https://w4project-ppri.onrender.com/'
-// http://localhost:4242
+const baseURL = 'https://w4project-ppri.onrender.com'
+// const baseURL = 'http://localhost:4242'
 
 async function fetchData() {
   const response = await fetch(`${baseURL}/animals`)
@@ -15,20 +15,21 @@ async function fetchData() {
 async function displayanimals() {
   const animals = await fetchData()
 
-  animals.forEach((message) => {
+  animals.forEach((animal) => {
     const div = document.createElement('div')
-    const animal = document.createElement('p')
+    const creature = document.createElement('p')
     const likes = document.createElement('p')
     const comment = document.createElement('p')
 
-    // userName.textContent = message.msg_name
-    // messageContent.textContent = message.content
+    // userName.textContent = animal.msg_name
+    // animalContent.textContent = animal.content
 
-    animal.textContent = message.animal
-    likes.textContent = textContent.likes
-    comment.textContent = document.comment
+    creature.textContent = animal.animalName
+    likes.textContent = animal.likes
+    comment.textContent = animal.comment
 
     // div.append(userName, messageContent)
+    div.append(creature,likes,comment)
 
     display.appendChild(div)
   })
@@ -41,20 +42,21 @@ async function handleSubmit(event) {
   const formData = new FormData(form)
   const userInput = Object.fromEntries(formData)
   const userInputJSON = JSON.stringify(userInput)
+  console.log(userInput);
 
   // {
   //   "msg_name": 'foo',
   //   "content": 'foo'
   // }
 
-  const response = await fetch(`${baseURL}/animals`, {
+  const response = await fetch(`${baseURL}/animals`,{
     headers: {
       "Content-Type" : "application/json"
     },
     method: "POST",
     body: userInputJSON
   })
-  window.location.reload()
+  // window.location.reload()
 } 
 
 form.addEventListener('submit', handleSubmit)
