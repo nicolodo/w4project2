@@ -43,7 +43,7 @@ app.post('/animals', async (req, res) => {
 
     res.status(200).json({message: "added message"})
     }
-    catch {
+    catch (err) {
         console.error("SERVER ERROR:", err.message); // This shows in your terminal
         res.status(500).json({ error: err.message }); // This shows in your browser console
     }
