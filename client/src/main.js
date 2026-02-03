@@ -24,7 +24,7 @@ async function displayanimals() {
     // userName.textContent = animal.msg_name
     // animalContent.textContent = animal.content
 
-    creature.textContent = animal.animalName
+    creature.textContent = animal.animal_name
     likes.textContent = animal.likes
     comment.textContent = animal.comment
 
