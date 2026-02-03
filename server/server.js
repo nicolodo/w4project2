@@ -28,6 +28,7 @@ app.get('/', (req, res) => {
 // This logs the table to the console
 app.get("/animals", async function (req, res) {
     const data = await db.query("SELECT * FROM animals");
+    console.log('I have asked for data from db: ',data)
     const animals = data.rows
     res.status(200).json(animals)
     // response.json(animals.rows);
