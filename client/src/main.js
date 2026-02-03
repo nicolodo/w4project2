@@ -4,31 +4,31 @@ const baseURL = 'https://w4project-ppri.onrender.com'
 // const baseURL = 'http://localhost:4242'
 
 async function fetchData() {
-  const response = await fetch(`${baseURL}/animals`)
-  const animals = await response.json()
+  const response = await fetch(`${baseURL}/guests`)
+  const guests = await response.json()
 
-  console.log(animals)
+  console.log(guests)
 
-  return animals
+  return guests
 }
 
-async function displayanimals() {
-  const animals = await fetchData()
+async function displayguests() {
+  const guests = await fetchData()
   const display = document.getElementById('app'); 
 
-  animals.forEach((animal) => {
+  guests.forEach((guest) => {
     const div = document.createElement('div')
 
     const creature = document.createElement('p')
-    const likes = document.createElement('p')
+    const length_of_stay = document.createElement('p')
     const comment = document.createElement('p')
 
-    // userName.textContent = animal.msg_name
-    // animalContent.textContent = animal.content
+    // userName.textContent = guest.msg_name
+    // guestContent.textContent = guest.content
 
-    creature.textContent = animal.animal_name
-    likes.textContent = animal.likes
-    comment.textContent = animal.comment
+    creature.textContent = guest.guest_name
+    length_of_stay.textContent = guest.length_of_stay
+    comment.textContent = guest.comment
 
     // div.append(userName, messageContent)
     div.append(creature,likes,comment)
@@ -36,7 +36,7 @@ async function displayanimals() {
     display.appendChild(div)
   })
 }
-displayanimals()
+displayguests()
 
 async function handleSubmit(event) {
   event.preventDefault()
@@ -51,7 +51,7 @@ async function handleSubmit(event) {
   //   "content": 'foo'
   // }
 
-  const response = await fetch(`${baseURL}/animals`,{
+  const response = await fetch(`${baseURL}/guests`,{
     headers: {
       "Content-Type" : "application/json"
     },

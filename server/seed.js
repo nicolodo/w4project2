@@ -24,6 +24,7 @@ const db = new pg.Pool({
 
 // seed();
 db.query(
-    `INSERT INTO animals (animal_name, likes, comment) VALUES ('bill', '3', 'bill the playpus is so cool!')`
+    // `INSERT INTO animals (animal_name, likes, comment) VALUES ('bill', '3', 'bill the playpus is so cool!')`
+     `INSERT INTO guestbook (guest_name, length_of_stay, comment) VALUES ('bill', '3', 'bill the playpus is so cool!')`
 );
 

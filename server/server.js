@@ -16,7 +16,7 @@ const db = new pg.Pool({
 });
 
 // db.query(
-//     `INSERT INTO animals (animal_name, likes, comment) VALUES ('bill', '3', 'bill the playpus is so cool!')`
+//     `INSERT INTO guests (guest_name, length_of_stay, comment) VALUES ('bill', '3', 'bill the playpus is so cool!')`
 // );
 
 app.get('/', (req, res) => {
@@ -26,20 +26,20 @@ app.get('/', (req, res) => {
 
 //  making an async function as the endpoint
 // This logs the table to the console
-app.get("/animals", async function (req, res) {
-    const data = await db.query("SELECT * FROM animals");
+app.get("/guests", async function (req, res) {
+    const data = await db.query("SELECT * FROM guests");
     console.log('I have asked for data from db: ',data)
-    const animals = data.rows
-    res.status(200).json(animals)
-    // response.json(animals.rows);
+    const guests = data.rows
+    res.status(200).json(guests)
+    // response.json(guests.rows);
 });
 
-app.post('/animals', async (req, res) => {
+app.post('/guests', async (req, res) => {
     try {
     console.log("you are requesting a post!")
     const userData = req.body
     console.log('userData from forms:', userData)
-    const dbQuery = await db.query(`INSERT INTO animals (animal_name, likes, comment) VALUES ($1, $2, $3)`, [userData.animal_name, userData.likes, userData.comment])
+    const dbQuery = await db.query(`INSERT INTO guests (guest_name, length_of_stay, comment) VALUES ($1, $2, $3)`, [userData.guest_name, userData.length_of_stay, userData.comment])
 
     res.status(200).json({message: "added message"})
     }
