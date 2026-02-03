@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 //  making an async function as the endpoint
 // This logs the table to the console
 app.get("/guests", async function (req, res) {
-    const data = await db.query("SELECT * FROM guests");
+    const data = await db.query("SELECT * FROM guestbook");
     console.log('I have asked for data from db: ',data)
     const guests = data.rows
     res.status(200).json(guests)
