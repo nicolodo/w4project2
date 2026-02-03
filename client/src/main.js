@@ -56,6 +56,7 @@ async function handleSubmit(event) {
     method: "POST",
     body: userInputJSON
   })
+  console.log("I have sent a post")
   // window.location.reload()
 } 
 
