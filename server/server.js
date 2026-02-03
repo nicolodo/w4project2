@@ -34,12 +34,18 @@ app.get("/animals", async function (req, res) {
 });
 
 app.post('/animals', async (req, res) => {
+    try {
     console.log("you are requesting a post!")
     const userData = req.body
     console.log(userData)
     const dbQuery = await db.query(`INSERT INTO animals (animal_name, likes, comment) VALUES ($1, $2, $3)`, [userData.animal_name, userData.likes, userData.comment])
 
     res.status(200).json({message: "added message"})
+    }
+    catch {
+        console.error("SERVER ERROR:", err.message); // This shows in your terminal
+        res.status(500).json({ error: err.message }); // This shows in your browser console
+    }
 })
 
 app.listen(4242, () => {
