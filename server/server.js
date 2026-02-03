@@ -39,7 +39,7 @@ app.post('/guests', async (req, res) => {
     console.log("you are requesting a post!")
     const userData = req.body
     console.log('userData from forms:', userData)
-    const dbQuery = await db.query(`INSERT INTO guests (guest_name, length_of_stay, comment) VALUES ($1, $2, $3)`, [userData.guest_name, userData.length_of_stay, userData.comment])
+    const dbQuery = await db.query(`INSERT INTO guestbook (guest_name, length_of_stay, comment) VALUES ($1, $2, $3)`, [userData.guest_name, userData.length_of_stay, userData.comment])
 
     res.status(200).json({message: "added message"})
     }
