@@ -16,24 +16,27 @@ const db = new pg.Pool({
 });
 
 app.get('/', (req, res) => {
-    res.send('Hello your looking at this website!');
+    res.send("Hello you're looking at this website!");
     console.log("the root has been requested!")
 })
 
 //  making an async function as the endpoint
 // This logs the table to the console
-app.get("/animals", async function (request, response) {
+app.get("/animals", async function (req, res) {
     const data = await db.query("SELECT * FROM animals");
     const animals = data.rows
     res.status(200).json(animals)
     // response.json(animals.rows);
 });
 
-app.post("/animals", async function (request, response) {
-    const animals = await db.query("SELECT * FROM animals WHERE id = 1");
-    response.json(animals.rows);
+app.post('/animals', async (req, res) => {
+    const userData = req.body
+    console.log(userData)
+    const dbQuery = await db.query(`INSERT INTO animals (animal_name, likes, comment) VALUES ($1, $2, $3)`, [userData.animal_name, userData.likes, userData.comment])
+
+    res.status(200).json({message: "added message"})
 })
 
 app.listen(4242, () => {
-    // nothing is to be said here
+    // console.log(`Server started on port http://localhost:4242`)
 });
