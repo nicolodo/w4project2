@@ -31,7 +31,7 @@ async function displayguests() {
     comment.textContent = guest.comment
 
     // div.append(userName, messageContent)
-    div.append(creature,likes,comment)
+    div.append(creature,length_of_stay,comment)
 
     display.appendChild(div)
   })
